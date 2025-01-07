@@ -1,10 +1,12 @@
 CREATE TABLE workers(
-  id UUID PRIMARY KEY DEFAULT gen_random_uuid() ,
+  id SERIAL PRIMARY KEY,
   full_name VARCHAR(200) NOT NULL CONSTRAINT "full name must be" CHECK (full_name != ''),
   department VARCHAR(100),
   birthday DATE NOT NULL CHECK (birthday > '1890-01-01' AND birthday <= current_date),
   salary NUMERIC(11,2) CHECK (salary >= 0)
 );
+
+DROP TABLE employees;
 
 -- @block
 ALTER TABLE workers
